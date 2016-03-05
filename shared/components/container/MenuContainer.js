@@ -43,7 +43,7 @@ class MenuContainer extends Component {
             <MenuItem
               key={'MenuChannelsList'}
               text="list channels"
-              navTarget='channels'
+              handlePress={this.props.navigateTo.bind(this, 'channels')}
               style={styles.highlight}/>
             <MenuGroupLabel text='Joined Channels'/>
             {publicChannels.length > 0 ? publicChannels : <Text style={styles.noJoinedChannles}>no joined channels</Text>}

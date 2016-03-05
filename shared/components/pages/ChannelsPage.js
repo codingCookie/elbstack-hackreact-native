@@ -37,7 +37,7 @@ class ChannelsPage extends Component {
 
     if (this.props.channels) {
         interactionsFinishedMarkup = Object.keys(this.props.channels).map(
-            (id) => (<Text key={'channel_id:' + id}>{this.props.channels[id].name}</Text>)
+            (id) => (<Text style={styles.listitem} key={'channel_id:' + id}>{this.props.channels[id].name}</Text>)
         )
     }
 
@@ -56,6 +56,9 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#f7f8fc'
+  },
+  listitem: {
+    fontSize: 25
   }
 }
 

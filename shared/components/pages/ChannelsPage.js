@@ -35,6 +35,12 @@ class ChannelsPage extends Component {
       interactionsFinishedMarkup = <Text>Lade Channels</Text>
     }
 
+    if (this.props.channels) {
+        interactionsFinishedMarkup = this.props.channels.map(
+            (channel) => <Text>{channel.id}</Text>
+        )
+    }
+
     return (
       <View style={styles.container}>
         <ActionBar title="Available Channels"/>
@@ -55,7 +61,9 @@ const styles = {
 
 
 export default connect(
-  null,
+  (state) => ({
+      channels: state.channels.list
+  }),
   (dispatch) => {
     return {
       listChannels: () => dispatch(listChannels())

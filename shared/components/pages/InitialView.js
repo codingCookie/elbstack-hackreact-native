@@ -31,8 +31,12 @@ class InitialView extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.content}>
+          <Image
+            style={styles.logo}
+            source={require('../../images/logo.png')}
+          />
           <Text style={styles.headline}>
-            hackreact messenger
+            hottentotten messenger
           </Text>
           <SendbirdConnect />
         </View>
@@ -65,6 +69,10 @@ const styles = {
     color: '#333333',
     marginBottom: 5,
   },
+  logo: {
+    width: 100,
+    height: 100
+  }
 }
 
 export default connect(

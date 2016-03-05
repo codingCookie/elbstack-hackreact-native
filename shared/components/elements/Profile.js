@@ -5,13 +5,14 @@ import React, {
 } from 'react-native'
 
 import Text from './Text'
+import { connect } from 'react-redux/native'
 
-export default class Profile extends Component {
+class Profile extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>Username</Text>
+        <Text>{this.props.userName}</Text>
       </View>
     )
   }
@@ -22,3 +23,11 @@ const styles = {
     margin: 20
   }
 }
+
+
+export default connect(
+    state => ({
+        userName: state.sendbird.user_name
+    }),
+    null
+)(Profile)

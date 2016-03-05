@@ -4,6 +4,7 @@ import {
   SENDBIRD_JOINED_CHANNEL
 } from '../constants/ActionTypes'
 import sendbird from 'sendbird'
+import { openSideMenu } from './navigation'
 
 export function listChannels() {
     const page = 1
@@ -42,6 +43,7 @@ export function joinChannel(url) {
                       type: SENDBIRD_JOINED_CHANNEL,
                       channel_id: data.id
                     });
+                  dispatch(openSideMenu()); //dirty
                 },
                 "errorFunc": function (status, error) {
                     // do something

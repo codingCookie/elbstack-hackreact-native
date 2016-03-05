@@ -1,4 +1,8 @@
-import { SENDBIRD_LIST_CHANNELS, SENDBIRD_LIST_CHANNELS_ERROR } from '../constants/ActionTypes'
+import {
+  SENDBIRD_LIST_CHANNELS,
+  SENDBIRD_LIST_CHANNELS_ERROR,
+  SENDBIRD_JOINED_CHANNEL
+} from '../constants/ActionTypes'
 import sendbird from 'sendbird'
 
 export function listChannels() {
@@ -34,21 +38,12 @@ export function joinChannel(url) {
             url,
             {
                 "successFunc": function (data) {
-                    console.log(data);
-                    sendbird.connect({
-                        "successFunc": function (data) {
-                            console.log(data);
-                            // do something
-                        },
-                        "errorFunc": function (status, error) {
-                            console.log(status, error);
-                            // do something
-                        }
+                  dispatch({
+                      type: SENDBIRD_JOINED_CHANNEL,
+                      channel_id: data.id
                     });
-                    // do something
                 },
                 "errorFunc": function (status, error) {
-                    console.log(status, error);
                     // do something
                 }
             }

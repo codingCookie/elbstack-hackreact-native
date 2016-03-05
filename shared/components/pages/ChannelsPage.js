@@ -36,8 +36,8 @@ class ChannelsPage extends Component {
     }
 
     if (this.props.channels) {
-        interactionsFinishedMarkup = this.props.channels.map(
-            (channel) => <Text>{channel.id}</Text>
+        interactionsFinishedMarkup = Object.keys(this.props.channels).map(
+            (id) => (<Text key={'channel_id:' + id}>{this.props.channels[id].name}</Text>)
         )
     }
 

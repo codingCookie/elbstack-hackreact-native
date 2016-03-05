@@ -32,6 +32,12 @@ class MenuContainer extends Component {
       )
     })
 
+    this.props.joinedChannels.forEach(channel => {
+      publicChannels.push(
+        <MenuItemContainer key={'MenuChannel' + channel.name} text={channel.name} navTarget='conversation'/>
+      )
+    });
+
     return (
       <View style={styles.background}>
         <View style={styles.statusbar}></View>
@@ -127,7 +133,11 @@ export default connect(
   (state) => {
     return {
       login: state.login,
-      notifications: state.notifications
+      notifications: state.notifications,
+      joinedChannels: Object
+        .keys(state.channels.list)
+        .map(id => state.channels.list[id])
+        .filter(channel => channel.joined)
     }
   },
   (dispatch) => {
